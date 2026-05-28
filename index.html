@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rotlo — Authentic Gujarati Thali, Reimagined | Ahmedabad & Gandhinagar</title>
+<meta name="description" content="Rotlo serves authentic Gujarati thali in a warm, modern setting across 3 outlets in Ahmedabad & Gandhinagar. Dine-in, delivery, banquet & catering. Trusted by 7,000+ diners." />
+<link rel="icon" type="image/png" href="images/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600&family=Caveat:wght@500;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Serif+Gujarati:wght@500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF5E9; --bg-deep:#F2E6CD; --ink:#2A1810; --ink-soft:#5C3A2A;
+    --terra:#C0532A; --terra-dk:#8C3A1B; --saffron:#E89B2B; --leaf:#3E5C32; --green:#2F5E45;
+    --line:rgba(42,24,16,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  body[data-lang="hi"]{font-family:'Noto Sans Devanagari',sans-serif}
+  body[data-lang="gu"]{font-family:'Noto Sans Gujarati',sans-serif}
+  body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(192,83,42,.04) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(232,155,43,.05) 0%,transparent 50%);pointer-events:none;z-index:0}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  img{max-width:100%;display:block}
+
+  /* NAV */
+  nav{position:sticky;top:0;background:rgba(251,245,233,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:50;padding:14px 0}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{flex-shrink:0;text-decoration:none;display:block}
+  .logo img{height:64px;width:auto;display:block}
+  .nav-right{display:flex;align-items:center;gap:28px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a:not(.nav-cta){color:var(--ink-soft);text-decoration:none;font-size:15px;font-weight:500;transition:color .2s}
+  .nav-links a:not(.nav-cta):hover{color:var(--terra)}
+  .nav-cta{background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:999px;font-size:14px;font-weight:600;transition:transform .2s,background .2s;text-decoration:none;white-space:nowrap}
+  .nav-cta:hover{background:var(--terra-dk);color:var(--bg);transform:translateY(-1px)}
+
+  /* language switcher - far right */
+  .lang-switch{display:inline-flex;background:var(--bg-deep);border-radius:999px;padding:4px;gap:2px;flex-shrink:0}
+  .lang-switch button{border:none;background:transparent;padding:6px 11px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink-soft);font-family:inherit;transition:background .2s,color .2s;line-height:1.2}
+  .lang-switch button[data-lang="hi"]{font-family:'Noto Sans Devanagari',sans-serif}
+  .lang-switch button[data-lang="gu"]{font-family:'Noto Sans Gujarati',sans-serif}
+  .lang-switch button.active{background:var(--terra);color:#fff}
+  .lang-switch button:hover:not(.active){background:rgba(192,83,42,.15);color:var(--ink)}
+
+  /* mobile menu toggle - styled as labeled pill, not bare hamburger */
+  .menu-toggle{display:none;align-items:center;gap:8px;background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:8px 14px;border-radius:999px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer}
+  .menu-toggle .bars{display:inline-flex;flex-direction:column;gap:3px}
+  .menu-toggle .bars i{width:16px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+  .menu-toggle[aria-expanded="true"] .bars i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+  .menu-toggle[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
+  .menu-toggle[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+  /* HERO */
+  .hero{padding:70px 0 80px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Caveat',cursive;font-size:23px;color:var(--terra);margin-bottom:20px}
+  body[data-lang="hi"] .eyebrow{font-family:'Tiro Devanagari Hindi',serif;font-style:italic;font-size:19px}
+  body[data-lang="gu"] .eyebrow{font-family:'Noto Serif Gujarati',serif;font-style:italic;font-size:19px}
+  .eyebrow::before{content:"";width:32px;height:2px;background:var(--terra)}
+  h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(46px,6.5vw,88px);line-height:0.96;letter-spacing:-0.03em;color:var(--ink);margin-bottom:24px}
+  body[data-lang="hi"] h1{font-family:'Noto Sans Devanagari',sans-serif;font-size:clamp(38px,5.5vw,72px);line-height:1.08}
+  body[data-lang="gu"] h1{font-family:'Noto Serif Gujarati',serif;font-size:clamp(38px,5.5vw,72px);line-height:1.08}
+  h1 .italic{font-style:italic;font-weight:500;color:var(--terra)}
+  body[data-lang="hi"] h1 .italic,body[data-lang="gu"] h1 .italic{font-style:normal;font-weight:700}
+  h1 .underline-mark{position:relative;display:inline-block}
+  h1 .underline-mark::after{content:"";position:absolute;bottom:6px;left:-4px;right:-4px;height:14px;background:var(--saffron);opacity:.35;z-index:-1;border-radius:2px;transform:skew(-8deg)}
+  .hero-sub{font-size:19px;color:var(--ink-soft);max-width:520px;margin-bottom:28px}
+  .social-proof{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);padding:10px 18px;border-radius:999px;margin-bottom:28px;font-size:14px;flex-wrap:wrap}
+  .social-proof .stars{color:var(--saffron);letter-spacing:1px}
+  .social-proof .num{font-weight:700;color:var(--ink)}
+  .social-proof .lbl{color:var(--ink-soft)}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 28px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;border:none;cursor:pointer;font-family:inherit}
+  .btn-primary{background:var(--terra);color:#fff;box-shadow:0 4px 0 var(--terra-dk)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--terra-dk)}
+  .btn-primary:active{transform:translateY(2px);box-shadow:0 2px 0 var(--terra-dk)}
+  .btn-secondary{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+  .btn-secondary:hover{background:var(--ink);color:var(--bg)}
+
+  /* hero image collage */
+  .hero-visual{position:relative;height:520px}
+  .hero-visual .img-main{position:absolute;top:0;right:0;width:78%;height:74%;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(140,58,27,.45);border:6px solid #fff}
+  .hero-visual .img-main img{width:100%;height:100%;object-fit:cover}
+  .hero-visual .img-sub{position:absolute;bottom:0;left:0;width:54%;height:46%;border-radius:20px;overflow:hidden;box-shadow:0 20px 40px -16px rgba(140,58,27,.4);border:6px solid #fff;z-index:2}
+  .hero-visual .img-sub img{width:100%;height:100%;object-fit:cover}
+  .hero-visual .badge{position:absolute;top:64%;right:4%;background:var(--ink);color:var(--bg);border-radius:16px;padding:14px 18px;z-index:3;box-shadow:0 12px 30px -8px rgba(0,0,0,.4);transform:rotate(3deg)}
+  .hero-visual .badge .b-num{font-family:'Fraunces',serif;font-weight:700;font-size:26px;line-height:1;color:var(--saffron)}
+  .hero-visual .badge .b-lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(251,245,233,.75);margin-top:2px}
+  body[data-lang="hi"] .hero-visual .badge .b-lbl,body[data-lang="gu"] .hero-visual .badge .b-lbl{text-transform:none;letter-spacing:0}
+
+  /* VALUES STRIP (replaces dish marquee) */
+  .values{background:var(--ink);color:var(--bg);padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .value{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .value .v-ic{font-size:26px}
+  .value .v-title{font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:var(--saffron)}
+  body[data-lang="hi"] .value .v-title{font-family:'Noto Sans Devanagari',sans-serif;font-weight:700}
+  body[data-lang="gu"] .value .v-title{font-family:'Noto Serif Gujarati',serif;font-weight:700}
+  .value .v-desc{font-size:13px;color:rgba(251,245,233,.7);max-width:200px}
+
+  /* SECTIONS */
+  section{padding:100px 0;position:relative}
+  .section-eyebrow{font-family:'Caveat',cursive;color:var(--terra);font-size:24px;margin-bottom:8px}
+  body[data-lang="hi"] .section-eyebrow{font-family:'Tiro Devanagari Hindi',serif;font-style:italic;font-size:20px}
+  body[data-lang="gu"] .section-eyebrow{font-family:'Noto Serif Gujarati',serif;font-style:italic;font-size:20px}
+  h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(36px,5vw,54px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:24px}
+  body[data-lang="hi"] h2{font-family:'Noto Sans Devanagari',sans-serif;font-size:clamp(30px,4.5vw,46px);line-height:1.15}
+  body[data-lang="gu"] h2{font-family:'Noto Serif Gujarati',serif;font-size:clamp(30px,4.5vw,46px);line-height:1.15}
+  h2 em{color:var(--terra);font-style:italic;font-weight:500}
+  body[data-lang="hi"] h2 em,body[data-lang="gu"] h2 em{font-style:normal;font-weight:700}
+
+  /* ABOUT */
+  .about{background:var(--bg-deep);border-radius:32px;margin:60px 24px;padding:80px 0}
+  .about .container{max-width:1100px}
+  .about-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:center}
+  .about-visual{aspect-ratio:4/5;border-radius:200px 200px 24px 24px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(140,58,27,.4);position:relative}
+  .about-visual img{width:100%;height:100%;object-fit:cover}
+  .about-content p{font-size:18px;color:var(--ink-soft);margin-bottom:20px;max-width:560px}
+  .about-content p strong{color:var(--ink);font-weight:600}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;max-width:580px}
+  .stat .num{font-family:'Fraunces',serif;font-weight:700;font-size:40px;color:var(--terra);line-height:1}
+  .stat .label{font-size:13px;color:var(--ink-soft);margin-top:6px;letter-spacing:0.04em;text-transform:uppercase}
+  body[data-lang="hi"] .stat .label,body[data-lang="gu"] .stat .label{text-transform:none;letter-spacing:0;font-size:13px}
+
+  /* EXPERIENCE / WHY (modern + authentic, no dish names) */
+  .exp .container{text-align:center}
+  .exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:60px;text-align:left}
+  .exp-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 26px;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+  .exp-card::before{content:"";position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:var(--saffron);border-radius:50%;opacity:.12;transition:transform .4s}
+  .exp-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -12px rgba(140,58,27,.18)}
+  .exp-card:hover::before{transform:scale(1.3)}
+  .exp-icon{font-size:42px;margin-bottom:16px;display:block}
+  .exp-card h3{font-family:'Fraunces',serif;font-size:21px;font-weight:600;margin-bottom:8px;color:var(--ink)}
+  body[data-lang="hi"] .exp-card h3{font-family:'Noto Sans Devanagari',sans-serif;font-weight:700}
+  body[data-lang="gu"] .exp-card h3{font-family:'Noto Serif Gujarati',serif;font-weight:700}
+  .exp-card p{font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+
+  /* GALLERY */
+  .gallery{padding-top:0}
+  .gallery .container{text-align:center}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:50px}
+  .gallery-grid .g-item{border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 10px 24px -14px rgba(140,58,27,.3)}
+  .gallery-grid .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .gallery-grid .g-item:hover img{transform:scale(1.08)}
+
+  /* OUTLETS */
+  .outlets{background:var(--ink);color:var(--bg);border-radius:32px 32px 0 0;margin-top:60px}
+  .outlets h2{color:var(--bg)}
+  .outlets .section-eyebrow{color:var(--saffron)}
+  .outlets-intro{text-align:center;max-width:640px;margin:0 auto}
+  .outlets-intro p{color:rgba(251,245,233,.7);margin-top:16px;font-size:17px}
+  .outlets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+  .outlet-card{background:rgba(251,245,233,.05);border:1px solid rgba(251,245,233,.12);border-radius:22px;overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+  .outlet-card:hover{transform:translateY(-6px);border-color:var(--saffron)}
+  .outlet-photo{aspect-ratio:4/3;overflow:hidden;position:relative}
+  .outlet-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .outlet-card:hover .outlet-photo img{transform:scale(1.06)}
+  .outlet-rating{position:absolute;top:14px;right:14px;display:inline-flex;align-items:center;gap:4px;background:rgba(42,24,16,.85);backdrop-filter:blur(4px);color:var(--saffron);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+  .outlet-body{padding:26px 24px;display:flex;flex-direction:column;flex:1}
+  .outlet-tag{font-family:'Caveat',cursive;color:var(--saffron);font-size:18px;margin-bottom:4px}
+  body[data-lang="hi"] .outlet-tag{font-family:'Tiro Devanagari Hindi',serif;font-style:italic;font-size:15px}
+  body[data-lang="gu"] .outlet-tag{font-family:'Noto Serif Gujarati',serif;font-style:italic;font-size:15px}
+  .outlet-card h3{font-family:'Fraunces',serif;font-size:25px;font-weight:600;margin:0 0 4px;color:var(--bg)}
+  body[data-lang="hi"] .outlet-card h3{font-family:'Noto Sans Devanagari',sans-serif;font-weight:700}
+  body[data-lang="gu"] .outlet-card h3{font-family:'Noto Serif Gujarati',serif;font-weight:700}
+  .outlet-sub{font-size:13px;color:rgba(251,245,233,.55);margin-bottom:14px}
+  .outlet-card .addr{color:rgba(251,245,233,.7);font-size:13.5px;margin-bottom:10px;line-height:1.5;display:flex;gap:8px}
+  .outlet-card .addr .pin{flex-shrink:0}
+  .outlet-card .phone{color:var(--saffron);font-size:14px;margin-bottom:16px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-weight:500}
+  .outlet-card .phone:hover{color:#fff}
+  .price-chip{display:inline-block;background:rgba(232,155,43,.14);color:var(--saffron);border:1px solid rgba(232,155,43,.3);border-radius:10px;padding:8px 12px;font-size:13px;margin-bottom:18px;font-weight:500;line-height:1.4}
+  .outlet-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none;transition:transform .2s}
+  .pill:hover{transform:translateY(-1px)}
+  .pill-swiggy{background:#FC8019;color:#fff}
+  .pill-zomato{background:#E23744;color:#fff}
+  .pill-map{background:transparent;color:var(--saffron);border:1px solid var(--saffron)}
+  .outlet-socials{display:flex;gap:10px;margin-top:14px}
+  .outlet-socials a{width:34px;height:34px;border-radius:50%;background:rgba(251,245,233,.08);display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none;color:rgba(251,245,233,.8);transition:background .2s,color .2s}
+  .outlet-socials a:hover{background:var(--saffron);color:var(--ink)}
+
+  /* CATERING banner */
+  .catering{background:linear-gradient(120deg,var(--green),#24493699);color:var(--bg);border-radius:24px;margin:60px 24px 0;padding:48px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .catering h3{font-family:'Fraunces',serif;font-size:30px;font-weight:600;margin-bottom:8px}
+  body[data-lang="hi"] .catering h3{font-family:'Noto Sans Devanagari',sans-serif;font-weight:700}
+  body[data-lang="gu"] .catering h3{font-family:'Noto Serif Gujarati',serif;font-weight:700}
+  .catering p{color:rgba(251,245,233,.85);max-width:520px;font-size:16px}
+  .catering .btn-primary{background:var(--saffron);box-shadow:0 4px 0 #b9721a;color:var(--ink)}
+  .catering .btn-primary:hover{box-shadow:0 6px 0 #b9721a}
+
+  /* CONTACT */
+  .contact{padding:120px 0 80px}
+  .contact-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:72px;align-items:start}
+  .contact-info > p{font-size:18px;color:var(--ink-soft);margin-bottom:36px;max-width:480px}
+  .contact-item{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+  .contact-item:last-child{border-bottom:1px solid var(--line)}
+  .contact-item .ic{width:44px;height:44px;background:var(--bg-deep);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .contact-item .lbl{font-size:13px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em}
+  body[data-lang="hi"] .contact-item .lbl,body[data-lang="gu"] .contact-item .lbl{text-transform:none;letter-spacing:0;font-size:14px}
+  .contact-item .val{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);font-weight:500;line-height:1.5}
+  body[data-lang="hi"] .contact-item .val{font-family:'Noto Sans Devanagari',sans-serif}
+  body[data-lang="gu"] .contact-item .val{font-family:'Noto Serif Gujarati',serif}
+  .contact-item .val a{color:inherit;text-decoration:none;display:block}
+  .contact-item .val a:hover{color:var(--terra)}
+  .booking-card{background:var(--bg-deep);border-radius:24px;padding:40px}
+  .booking-card h3{font-family:'Fraunces',serif;font-size:27px;font-weight:600;margin-bottom:8px}
+  body[data-lang="hi"] .booking-card h3{font-family:'Noto Sans Devanagari',sans-serif;font-weight:700}
+  body[data-lang="gu"] .booking-card h3{font-family:'Noto Serif Gujarati',serif;font-weight:700}
+  .booking-card > p{color:var(--ink-soft);margin-bottom:24px;font-size:15px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;margin-bottom:6px;color:var(--ink-soft);font-weight:500}
+  .field input,.field textarea,.field select{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .2s}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--terra)}
+  .field textarea{resize:vertical;min-height:90px}
+  .form-note{font-size:12.5px;color:var(--ink-soft);margin-top:6px;opacity:.8}
+  .wa-card{display:flex;flex-direction:column}
+  .wa-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+  .wa-logo{width:46px;height:46px;flex-shrink:0;background:#25D366;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px}
+  .wa-head h3{margin-bottom:4px}
+  .wa-head p{color:var(--ink-soft);font-size:14px;margin:0}
+  .wa-btn{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:12px;text-decoration:none;transition:transform .2s,border-color .2s,box-shadow .2s}
+  .wa-btn:hover{transform:translateY(-2px);border-color:#25D366;box-shadow:0 10px 24px -12px rgba(37,211,102,.5)}
+  .wa-ic{width:38px;height:38px;flex-shrink:0;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .wa-text{display:flex;flex-direction:column;flex:1;line-height:1.3}
+  .wa-text strong{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);font-weight:600}
+  body[data-lang="hi"] .wa-text strong{font-family:'Noto Sans Devanagari',sans-serif;font-weight:700}
+  body[data-lang="gu"] .wa-text strong{font-family:'Noto Serif Gujarati',serif;font-weight:700}
+  .wa-text em{font-style:normal;font-size:13px;color:var(--ink-soft)}
+  .wa-arrow{color:#25D366;font-size:20px;font-weight:700}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(251,245,233,.7);padding:60px 0 30px}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;margin-bottom:40px}
+  .footer-logo img{height:84px;width:auto;margin-bottom:6px}
+  .footer-tagline{margin-top:8px;max-width:340px;font-size:15px;color:rgba(251,245,233,.6)}
+  .footer-col h4{color:var(--bg);font-family:'Fraunces',serif;font-size:18px;margin-bottom:16px;font-weight:500}
+  body[data-lang="hi"] .footer-col h4{font-family:'Noto Sans Devanagari',sans-serif;font-weight:600}
+  body[data-lang="gu"] .footer-col h4{font-family:'Noto Serif Gujarati',serif;font-weight:600}
+  .footer-col a{display:block;color:rgba(251,245,233,.65);text-decoration:none;font-size:14px;padding:4px 0;transition:color .2s}
+  .footer-col a:hover{color:var(--saffron)}
+  .socials{display:flex;gap:12px;margin-top:20px}
+  .socials a{width:40px;height:40px;background:rgba(251,245,233,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s,color .2s;text-decoration:none;color:inherit}
+  .socials a:hover{background:var(--saffron);color:var(--ink)}
+  .footer-bottom{border-top:1px solid rgba(251,245,233,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(251,245,233,.5)}
+  .footer-bottom .made{font-family:'Caveat',cursive;font-size:18px;color:var(--saffron)}
+  body[data-lang="hi"] .footer-bottom .made{font-family:'Tiro Devanagari Hindi',serif;font-style:italic;font-size:15px}
+  body[data-lang="gu"] .footer-bottom .made{font-family:'Noto Serif Gujarati',serif;font-style:italic;font-size:15px}
+
+  /* RESPONSIVE */
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-visual{height:420px;max-width:480px;margin:0 auto;width:100%}
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .about-visual{max-width:340px;margin:0 auto;aspect-ratio:4/4}
+    .values-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    .outlets-grid{grid-template-columns:1fr;gap:18px;max-width:440px;margin-left:auto;margin-right:auto}
+    .contact-grid{grid-template-columns:1fr;gap:48px}
+    .footer-grid{grid-template-columns:1fr;gap:36px}
+    .catering{flex-direction:column;text-align:center;align-items:center}
+    section{padding:72px 0}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--line);align-items:flex-start;box-shadow:0 16px 30px -12px rgba(0,0,0,.15)}
+    .nav-links.open{display:flex}
+    .nav-links .nav-cta{align-self:stretch;text-align:center}
+    .menu-toggle{display:inline-flex}
+    .nav-right{gap:12px}
+  }
+  @media (max-width:480px){
+    .container{padding:0 20px}
+    .cta-row{flex-direction:column;align-items:stretch}
+    .btn{justify-content:center}
+    .stats{grid-template-columns:1fr 1fr;gap:20px}
+    .logo img{height:52px}
+    .lang-switch button{padding:6px 9px;font-size:12px}
+    .values-grid{grid-template-columns:1fr;gap:22px}
+    .hero-visual{height:360px}
+  }
+</style>
+</head>
+<body data-lang="en">
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="logo" aria-label="Rotlo - Gujarati Rasthal"><img src="images/logo.png" alt="Rotlo Gujarati Rasthal" /></a>
+    <div class="nav-right">
+      <div class="nav-links" id="navLinks">
+        <a href="#about" data-i18n="nav.about">Our Story</a>
+        <a href="#experience" data-i18n="nav.exp">Why Rotlo</a>
+        <a href="#outlets" data-i18n="nav.outlets">Outlets</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="#outlets" class="nav-cta" data-i18n="nav.order">Order Online</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="Menu" onclick="toggleMenu()">
+        <span class="bars"><i></i><i></i><i></i></span>
+        <span data-i18n="nav.menuBtn">Menu</span>
+      </button>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button data-lang="en" class="active" onclick="setLang('en')">EN</button>
+        <button data-lang="hi" onclick="setLang('hi')">हिं</button>
+        <button data-lang="gu" onclick="setLang('gu')">ગુ</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="eyebrow" data-i18n="hero.eyebrow">We don't just serve food — we serve happiness</div>
+      <h1 data-i18n-html="hero.title">Tradition you can taste.<br><span class="italic">Comfort</span> you can <span class="underline-mark">feel.</span></h1>
+      <p class="hero-sub" data-i18n="hero.sub">Authentic Gujarati thali, prepared with fresh-ground masalas and time-honoured recipes — served in a warm, modern space that feels just like home, only better.</p>
+      <div class="social-proof">
+        <span class="stars">★★★★★</span>
+        <span><span class="num">4.5</span><span class="lbl" data-i18n="hero.reviewsLabel"> · loved by 7,000+ diners</span></span>
+      </div>
+      <div class="cta-row">
+        <a href="#outlets" class="btn btn-primary" data-i18n="hero.ctaPrimary">Find a Table →</a>
+        <a href="#experience" class="btn btn-secondary" data-i18n="hero.ctaSecondary">Why Rotlo</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="img-main"><img src="images/about.jpg" alt="Rotlo dining interior" loading="eager" /></div>
+      <div class="img-sub"><img src="images/outlet_vastrapur.jpg" alt="Rotlo warm dining space" loading="lazy" /></div>
+      <div class="badge">
+        <div class="b-num">3</div>
+        <div class="b-lbl" data-i18n-html="hero.badge">Outlets across<br>Ahmedabad & Gandhinagar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES (modern + authentic, no dish names) -->
+<div class="values">
+  <div class="container values-grid">
+    <div class="value"><span class="v-ic">🌾</span><div class="v-title" data-i18n="val.1.t">Pure & Honest</div><div class="v-desc" data-i18n="val.1.d">Fresh-ground masalas and quality ingredients, no shortcuts.</div></div>
+    <div class="value"><span class="v-ic">🪔</span><div class="v-title" data-i18n="val.2.t">Rooted in Tradition</div><div class="v-desc" data-i18n="val.2.d">Recipes passed down through generations.</div></div>
+    <div class="value"><span class="v-ic">✨</span><div class="v-title" data-i18n="val.3.t">Modern Comfort</div><div class="v-desc" data-i18n="val.3.d">Elegant, welcoming spaces designed for you.</div></div>
+    <div class="value"><span class="v-ic">🥗</span><div class="v-title" data-i18n="val.4.t">100% Vegetarian</div><div class="v-desc" data-i18n="val.4.d">Wholesome, satvik food — Jain options too.</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual"><img src="images/gallery3.jpg" alt="Rotlo interior" loading="lazy" /></div>
+      <div class="about-content">
+        <div class="section-eyebrow" data-i18n="about.eyebrow">Our story</div>
+        <h2 data-i18n-html="about.title">Where heritage meets <em>hospitality.</em></h2>
+        <p data-i18n-html="about.p1">Rotlo began with a simple belief — <strong>real Gujarati food deserves to be celebrated.</strong> So we took the recipes our grandmothers swore by and gave them a home worthy of them: warm, beautiful spaces where every meal feels like an occasion.</p>
+        <p data-i18n="about.p2">Fresh masalas. Time-honoured recipes. Unlimited thalis served with genuine warmth. Whether you dine in, order delivery, or book us for an event — you taste the same care every single time.</p>
+        <div class="stats">
+          <div class="stat"><div class="num">3</div><div class="label" data-i18n="about.stat1">Outlets</div></div>
+          <div class="stat"><div class="num">7K+</div><div class="label" data-i18n="about.stat2">Reviews</div></div>
+          <div class="stat"><div class="num">4.5★</div><div class="label" data-i18n="about.stat3">Avg Rating</div></div>
+          <div class="stat"><div class="num">100%</div><div class="label" data-i18n="about.stat4">Veg</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE / WHY -->
+<section class="exp" id="experience">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="exp.eyebrow">Why Rotlo</div>
+    <h2 data-i18n-html="exp.title">Authentic at heart, <em>modern by design.</em></h2>
+    <div class="exp-grid">
+      <div class="exp-card"><span class="exp-icon">🍲</span><h3 data-i18n="exp.c1.t">Made the Right Way</h3><p data-i18n="exp.c1.d">No compromises in the kitchen. Quality ingredients and real recipes, the way authentic Gujarati food is meant to be made.</p></div>
+      <div class="exp-card"><span class="exp-icon">🛋️</span><h3 data-i18n="exp.c2.t">Spaces You'll Love</h3><p data-i18n="exp.c2.d">Thoughtfully designed interiors — warm, elegant and comfortable, whether it's lunch with family or a special evening.</p></div>
+      <div class="exp-card"><span class="exp-icon">♾️</span><h3 data-i18n="exp.c3.t">Unlimited Thali</h3><p data-i18n="exp.c3.d">A complete spread — sweets, farsan, sabzis, dal, kadhi, rotli, rice and more, refilled until you're truly satisfied.</p></div>
+      <div class="exp-card"><span class="exp-icon">🎉</span><h3 data-i18n="exp.c4.t">Banquet & Catering</h3><p data-i18n="exp.c4.d">Hosting an event? Our Gandhinagar outlet offers banquet space and full catering services for every occasion.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="gallery.eyebrow">A look inside</div>
+    <h2 data-i18n-html="gallery.title">Come for the food, <em>stay for the feeling.</em></h2>
+    <div class="gallery-grid">
+      <div class="g-item"><img src="images/gallery1.jpg" alt="Rotlo dining" loading="lazy" /></div>
+      <div class="g-item"><img src="images/gallery2.jpg" alt="Rotlo seating" loading="lazy" /></div>
+      <div class="g-item"><img src="images/about.jpg" alt="Rotlo interior" loading="lazy" /></div>
+      <div class="g-item"><img src="images/gallery4.jpg" alt="Rotlo ambiance" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTLETS -->
+<section class="outlets" id="outlets">
+  <div class="container">
+    <div class="outlets-intro">
+      <div class="section-eyebrow" data-i18n="outlets.eyebrow">Find us</div>
+      <h2 data-i18n-html="outlets.title">Three outlets. <em>One taste of home.</em></h2>
+      <p data-i18n="outlets.sub">Dine in for the full experience, or order hot to your door on Swiggy & Zomato.</p>
+    </div>
+    <div class="outlets-grid">
+
+      <!-- Chanakyapuri -->
+      <div class="outlet-card">
+        <div class="outlet-photo">
+          <img src="images/outlet_chanakyapuri.jpg" alt="Rotlo Chanakyapuri" loading="lazy" />
+          <span class="outlet-rating">★ 4.3 · 1,074+</span>
+        </div>
+        <div class="outlet-body">
+          <div class="outlet-tag" data-i18n="o1.tag">The original</div>
+          <h3 data-i18n="o1.name">Chanakyapuri</h3>
+          <div class="outlet-sub" data-i18n="o1.sub">Rotlo The Dining Hall</div>
+          <div class="addr"><span class="pin">📍</span><span data-i18n="o1.addr">A-11, Shivam Arcade, R.C. Technical Road, Chanakyapuri, Ahmedabad — 380061</span></div>
+          <a href="tel:+918799612162" class="phone">📞 087996 12162</a>
+          <div class="price-chip" data-i18n="o1.price">Budget-friendly unlimited thali · Jain available</div>
+          <div class="outlet-actions">
+            <a href="https://www.swiggy.com/search?query=Rotlo%20The%20Dining%20Hall%20Chanakyapuri" target="_blank" rel="noopener" class="pill pill-swiggy">Swiggy</a>
+            <a href="https://www.zomato.com/ahmedabad/rotlo-the-dining-hall-ghatlodia" target="_blank" rel="noopener" class="pill pill-zomato">Zomato</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Rotlo%20The%20Dining%20Hall%20Chanakyapuri%20Ahmedabad" target="_blank" rel="noopener" class="pill pill-map" data-i18n="outlets.map">📍 Map</a>
+          </div>
+          <div class="outlet-socials">
+            <a href="https://www.instagram.com/rotlo_chanakyapuri/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+            <a href="https://www.facebook.com/rotlo.chanakyapuri" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vastrapur -->
+      <div class="outlet-card">
+        <div class="outlet-photo">
+          <img src="images/outlet_vastrapur.jpg" alt="Rotlo Vastrapur" loading="lazy" />
+          <span class="outlet-rating">★ 4.6 · 2,183+</span>
+        </div>
+        <div class="outlet-body">
+          <div class="outlet-tag" data-i18n="o2.tag">Cosy & modern</div>
+          <h3 data-i18n="o2.name">Vastrapur</h3>
+          <div class="outlet-sub" data-i18n="o2.sub">Rotlo Gujarati Rasthal</div>
+          <div class="addr"><span class="pin">📍</span><span data-i18n="o2.addr">FF-136/137, Himalaya Arcade A, nr. Bharat Petroleum, Vastrapur Gam, Mahavir Nagar Society, Vastrapur, Ahmedabad — 380015</span></div>
+          <a href="tel:+919510729842" class="phone">📞 095107 29842</a>
+          <div class="price-chip" data-i18n="o2.price">Adults ₹280 · Kids ₹180 (below 7) · Jain available</div>
+          <div class="outlet-actions">
+            <a href="https://www.swiggy.com/search?query=Rotlo%20Gujarati%20Rasthal%20Vastrapur" target="_blank" rel="noopener" class="pill pill-swiggy">Swiggy</a>
+            <a href="https://www.zomato.com/ahmedabad/rotlo-gujarati-rasthal-vastrapur" target="_blank" rel="noopener" class="pill pill-zomato">Zomato</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Rotlo%20Gujarati%20Rasthal%20Vastrapur%20Ahmedabad" target="_blank" rel="noopener" class="pill pill-map" data-i18n="outlets.map">📍 Map</a>
+          </div>
+          <div class="outlet-socials">
+            <a href="https://www.instagram.com/rotlo_vastrapur/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+            <a href="https://www.facebook.com/rotlo.vastrapurr/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gandhinagar / Sargasan -->
+      <div class="outlet-card">
+        <div class="outlet-photo">
+          <img src="images/outlet_gandhinagar.jpg" alt="Rotlo Gandhinagar" loading="lazy" />
+          <span class="outlet-rating">★ 4.5 · 3,803+</span>
+        </div>
+        <div class="outlet-body">
+          <div class="outlet-tag" data-i18n="o3.tag">Restaurant & banquet</div>
+          <h3 data-i18n="o3.name">Gandhinagar</h3>
+          <div class="outlet-sub" data-i18n="o3.sub">Rotlo Gujarati Rasthal · Sargasan</div>
+          <div class="addr"><span class="pin">📍</span><span data-i18n="o3.addr">Atria Business Hub, KH Road, Vasana Hadmatia, Sargasan, Gandhinagar — 382421</span></div>
+          <a href="tel:+919537770305" class="phone">📞 095377 70305</a>
+          <div class="price-chip" data-i18n="o3.price">Dine-in ₹399 · Takeaway ₹200 · Kids ₹220 · Banquet & catering</div>
+          <div class="outlet-actions">
+            <a href="https://www.swiggy.com/search?query=Rotlo%20Gujarati%20Rasthal%20Sargasan%20Gandhinagar" target="_blank" rel="noopener" class="pill pill-swiggy">Swiggy</a>
+            <a href="https://www.zomato.com/ahmedabad/rotlo-gujarati-rasthal-infocity-gandhinagar" target="_blank" rel="noopener" class="pill pill-zomato">Zomato</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Rotlo%20Gujarati%20Rasthal%20Sargasan%20Gandhinagar" target="_blank" rel="noopener" class="pill pill-map" data-i18n="outlets.map">📍 Map</a>
+          </div>
+          <div class="outlet-socials">
+            <a href="https://www.instagram.com/rotlo_gandhinagar/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+            <a href="https://www.facebook.com/p/Rotlo-Gujarati-Rasthal-61558719188835/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CATERING banner -->
+    <div class="catering">
+      <div>
+        <h3 data-i18n="catering.title">Planning an event?</h3>
+        <p data-i18n="catering.desc">Our Gandhinagar outlet offers a full banquet hall and authentic Gujarati catering — perfect for celebrations, corporate lunches and family functions.</p>
+      </div>
+      <a href="tel:+919537770305" class="btn btn-primary" data-i18n="catering.cta">Enquire Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <div class="section-eyebrow" data-i18n="contact.eyebrow">Get in touch</div>
+      <h2 data-i18n-html="contact.title">Hungry? Or just want to <em>say hi?</em></h2>
+      <p data-i18n="contact.sub">Catering, bulk orders, feedback or a simple hello — we'd love to hear from you.</p>
+      <div class="contact-item"><div class="ic">📞</div><div><div class="lbl" data-i18n="contact.callLbl">Call our outlets</div><div class="val"><a href="tel:+918799612162">Chanakyapuri · 087996 12162</a><a href="tel:+919510729842">Vastrapur · 095107 29842</a><a href="tel:+919537770305">Gandhinagar · 095377 70305</a></div></div></div>
+      <div class="contact-item"><div class="ic">✉️</div><div><div class="lbl" data-i18n="contact.emailLbl">Email</div><div class="val"><a href="mailto:rotlodininghall@gmail.com">rotlodininghall@gmail.com</a></div></div></div>
+      <div class="contact-item"><div class="ic">⏰</div><div><div class="lbl" data-i18n="contact.hoursLbl">Open hours</div><div class="val" data-i18n-html="contact.hoursVal">11:30 AM – 3:30 PM &nbsp;·&nbsp; 7:00 PM – 10:30 PM</div></div></div>
+    </div>
+    <div class="booking-card wa-card">
+      <div class="wa-head">
+        <span class="wa-logo">💬</span>
+        <div>
+          <h3 data-i18n="wa.title">Chat with us on WhatsApp</h3>
+          <p data-i18n="wa.sub">Pick the outlet closest to you — message us directly for orders, catering or bookings.</p>
+        </div>
+      </div>
+      <a class="wa-btn" href="https://wa.me/918799612162?text=Hi%20Rotlo%20Chanakyapuri%2C%20I%27d%20like%20to%20enquire" target="_blank" rel="noopener">
+        <span class="wa-ic">💬</span>
+        <span class="wa-text"><strong data-i18n="o1.name">Chanakyapuri</strong><em>087996 12162</em></span>
+        <span class="wa-arrow">→</span>
+      </a>
+      <a class="wa-btn" href="https://wa.me/919510729842?text=Hi%20Rotlo%20Vastrapur%2C%20I%27d%20like%20to%20enquire" target="_blank" rel="noopener">
+        <span class="wa-ic">💬</span>
+        <span class="wa-text"><strong data-i18n="o2.name">Vastrapur</strong><em>095107 29842</em></span>
+        <span class="wa-arrow">→</span>
+      </a>
+      <a class="wa-btn" href="https://wa.me/919537770305?text=Hi%20Rotlo%20Gandhinagar%2C%20I%27d%20like%20to%20enquire" target="_blank" rel="noopener">
+        <span class="wa-ic">💬</span>
+        <span class="wa-text"><strong data-i18n="o3.name">Gandhinagar</strong><em>095377 70305</em></span>
+        <span class="wa-arrow">→</span>
+      </a>
+      <p class="form-note" data-i18n="wa.note">Opens WhatsApp with a ready message — just hit send.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="images/logo-white.png" alt="Rotlo Gujarati Rasthal" /></div>
+        <p class="footer-tagline" data-i18n="footer.tagline">We don't just serve food — we serve happiness. Authentic Gujarati thali across Ahmedabad and Gandhinagar.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/rotlo_vastrapur/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://www.facebook.com/rotlo.vastrapurr/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a href="tel:+919510729842" aria-label="Call">📞</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4 data-i18n="footer.exploreTitle">Explore</h4><a href="#about" data-i18n="nav.about">Our story</a><a href="#experience" data-i18n="nav.exp">Why Rotlo</a><a href="#outlets" data-i18n="nav.outlets">Outlets</a><a href="#contact" data-i18n="nav.contact">Contact</a></div>
+      <div class="footer-col"><h4 data-i18n="footer.outletsTitle">Our outlets</h4><a href="tel:+918799612162" data-i18n="o1.name">Chanakyapuri</a><a href="tel:+919510729842" data-i18n="o2.name">Vastrapur</a><a href="tel:+919537770305" data-i18n="o3.name">Gandhinagar</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div data-i18n-html="footer.copy">© <span id="yr"></span> Rotlo Gujarati Rasthal. All rights reserved.</div>
+      <div class="made" data-i18n="footer.made">made with love 🌾</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const I18N = {
+    en: {
+      "nav.about":"Our Story","nav.exp":"Why Rotlo","nav.outlets":"Outlets","nav.contact":"Contact","nav.order":"Order Online","nav.menuBtn":"Menu",
+      "hero.eyebrow":"We don't just serve food — we serve happiness",
+      "hero.title":'Tradition you can taste.<br><span class="italic">Comfort</span> you can <span class="underline-mark">feel.</span>',
+      "hero.sub":"Authentic Gujarati thali, prepared with fresh-ground masalas and time-honoured recipes — served in a warm, modern space that feels just like home, only better.",
+      "hero.reviewsLabel":" · loved by 7,000+ diners",
+      "hero.ctaPrimary":"Find a Table →","hero.ctaSecondary":"Why Rotlo",
+      "hero.badge":"Outlets across<br>Ahmedabad & Gandhinagar",
+      "val.1.t":"Pure & Honest","val.1.d":"Fresh-ground masalas and quality ingredients, no shortcuts.",
+      "val.2.t":"Rooted in Tradition","val.2.d":"Recipes passed down through generations.",
+      "val.3.t":"Modern Comfort","val.3.d":"Elegant, welcoming spaces designed for you.",
+      "val.4.t":"100% Vegetarian","val.4.d":"Wholesome, satvik food — Jain options too.",
+      "about.eyebrow":"Our story",
+      "about.title":"Where heritage meets <em>hospitality.</em>",
+      "about.p1":"Rotlo began with a simple belief — <strong>real Gujarati food deserves to be celebrated.</strong> So we took the recipes our grandmothers swore by and gave them a home worthy of them: warm, beautiful spaces where every meal feels like an occasion.",
+      "about.p2":"Fresh masalas. Time-honoured recipes. Unlimited thalis served with genuine warmth. Whether you dine in, order delivery, or book us for an event — you taste the same care every single time.",
+      "about.stat1":"Outlets","about.stat2":"Reviews","about.stat3":"Avg Rating","about.stat4":"Veg",
+      "exp.eyebrow":"Why Rotlo","exp.title":"Authentic at heart, <em>modern by design.</em>",
+      "exp.c1.t":"Made the Right Way","exp.c1.d":"No compromises in the kitchen. Quality ingredients and real recipes, the way authentic Gujarati food is meant to be made.",
+      "exp.c2.t":"Spaces You'll Love","exp.c2.d":"Thoughtfully designed interiors — warm, elegant and comfortable, whether it's lunch with family or a special evening.",
+      "exp.c3.t":"Unlimited Thali","exp.c3.d":"A complete spread — sweets, farsan, sabzis, dal, kadhi, rotli, rice and more, refilled until you're truly satisfied.",
+      "exp.c4.t":"Banquet & Catering","exp.c4.d":"Hosting an event? Our Gandhinagar outlet offers banquet space and full catering services for every occasion.",
+      "gallery.eyebrow":"A look inside","gallery.title":"Come for the food, <em>stay for the feeling.</em>",
+      "outlets.eyebrow":"Find us","outlets.title":"Three outlets. <em>One taste of home.</em>",
+      "outlets.sub":"Dine in for the full experience, or order hot to your door on Swiggy & Zomato.",
+      "outlets.map":"📍 Map",
+      "o1.tag":"The original","o1.name":"Chanakyapuri","o1.sub":"Rotlo The Dining Hall","o1.addr":"A-11, Shivam Arcade, R.C. Technical Road, Chanakyapuri, Ahmedabad — 380061","o1.price":"Budget-friendly unlimited thali · Jain available",
+      "o2.tag":"Cosy & modern","o2.name":"Vastrapur","o2.sub":"Rotlo Gujarati Rasthal","o2.addr":"FF-136/137, Himalaya Arcade A, nr. Bharat Petroleum, Vastrapur Gam, Mahavir Nagar Society, Vastrapur, Ahmedabad — 380015","o2.price":"Adults ₹280 · Kids ₹180 (below 7) · Jain available",
+      "o3.tag":"Restaurant & banquet","o3.name":"Gandhinagar","o3.sub":"Rotlo Gujarati Rasthal · Sargasan","o3.addr":"Atria Business Hub, KH Road, Vasana Hadmatia, Sargasan, Gandhinagar — 382421","o3.price":"Dine-in ₹399 · Takeaway ₹200 · Kids ₹220 · Banquet & catering",
+      "catering.title":"Planning an event?","catering.desc":"Our Gandhinagar outlet offers a full banquet hall and authentic Gujarati catering — perfect for celebrations, corporate lunches and family functions.","catering.cta":"Enquire Now →",
+      "contact.eyebrow":"Get in touch","contact.title":"Hungry? Or just want to <em>say hi?</em>",
+      "contact.sub":"Catering, bulk orders, feedback or a simple hello — we'd love to hear from you.",
+      "contact.callLbl":"Call our outlets","contact.emailLbl":"Email","contact.hoursLbl":"Open hours","contact.hoursVal":"11:30 AM – 3:30 PM &nbsp;·&nbsp; 7:00 PM – 10:30 PM",
+      "contact.formTitle":"Send us a message","contact.formSub":"Fill this in and it lands straight in our inbox — we reply within a day.",
+      "contact.fName":"Your name","contact.fPhone":"Phone","contact.fReason":"Reason",
+      "contact.opt1":"General enquiry","contact.opt2":"Catering / bulk order","contact.opt3":"Banquet / event booking","contact.opt4":"Feedback",
+      "contact.fMsg":"Message","contact.fSubmit":"Send message →",
+      "contact.formNote":"We'll never share your details. Replies come from our team directly.",
+      "wa.title":"Chat with us on WhatsApp","wa.sub":"Pick the outlet closest to you — message us directly for orders, catering or bookings.","wa.note":"Opens WhatsApp with a ready message — just hit send.",
+      "footer.tagline":"We don't just serve food — we serve happiness. Authentic Gujarati thali across Ahmedabad and Gandhinagar.",
+      "footer.exploreTitle":"Explore","footer.outletsTitle":"Our outlets",
+      "footer.copy":'© <span id="yr"></span> Rotlo Gujarati Rasthal. All rights reserved.',
+      "footer.made":"made with love 🌾"
+    },
+    hi: {
+      "nav.about":"हमारी कहानी","nav.exp":"क्यों Rotlo","nav.outlets":"आउटलेट","nav.contact":"संपर्क","nav.order":"ऑर्डर करें","nav.menuBtn":"मेन्यू",
+      "hero.eyebrow":"हम सिर्फ खाना नहीं, खुशियां भी परोसते हैं",
+      "hero.title":'स्वाद में परंपरा,<br><span class="italic">एहसास</span> में <span class="underline-mark">अपनापन।</span>',
+      "hero.sub":"ताज़े पिसे मसालों और पारंपरिक रेसिपी से बनी असली गुजराती थाली — एक गर्मजोशी भरे, आधुनिक माहौल में, जो घर जैसा लगे, बस उससे भी बेहतर।",
+      "hero.reviewsLabel":" · 7,000+ ग्राहकों का प्यार",
+      "hero.ctaPrimary":"टेबल बुक करें →","hero.ctaSecondary":"क्यों Rotlo",
+      "hero.badge":"अहमदाबाद और गांधीनगर में<br>तीन आउटलेट",
+      "val.1.t":"शुद्ध और ईमानदार","val.1.d":"ताज़े पिसे मसाले और बेहतरीन सामग्री, कोई शॉर्टकट नहीं।",
+      "val.2.t":"परंपरा से जुड़े","val.2.d":"पीढ़ियों से चली आ रही रेसिपी।",
+      "val.3.t":"आधुनिक आराम","val.3.d":"आपके लिए बनाए गए सुंदर, स्वागत करते माहौल।",
+      "val.4.t":"100% शाकाहारी","val.4.d":"पौष्टिक, सात्विक खाना — जैन विकल्प भी।",
+      "about.eyebrow":"हमारी कहानी",
+      "about.title":"जहाँ विरासत मिले <em>मेहमाननवाज़ी से।</em>",
+      "about.p1":"Rotlo एक सीधी सोच से शुरू हुआ — <strong>असली गुजराती खाने को सम्मान मिलना चाहिए।</strong> इसलिए हमने दादी-नानी की रेसिपी को एक ऐसा घर दिया जो उनके लायक हो: गर्मजोशी भरे, खूबसूरत स्थान जहाँ हर भोजन एक खास मौका लगे।",
+      "about.p2":"ताज़े मसाले। पारंपरिक रेसिपी। दिल से परोसी गई अनलिमिटेड थाली। चाहे आप यहाँ खाएँ, डिलीवरी मँगवाएँ या किसी आयोजन के लिए बुक करें — हर बार वही देखभाल चखने को मिलेगी।",
+      "about.stat1":"आउटलेट","about.stat2":"रिव्यू","about.stat3":"औसत रेटिंग","about.stat4":"शाकाहारी",
+      "exp.eyebrow":"क्यों Rotlo","exp.title":"दिल से असली, <em>डिज़ाइन में आधुनिक।</em>",
+      "exp.c1.t":"सही तरीके से बना","exp.c1.d":"रसोई में कोई समझौता नहीं। बेहतरीन सामग्री और असली रेसिपी, जैसे असली गुजराती खाना बनना चाहिए।",
+      "exp.c2.t":"ऐसे स्थान जो पसंद आएँ","exp.c2.d":"सोच-समझकर बनाए गए इंटीरियर — गर्मजोशी भरे, सुंदर और आरामदायक, चाहे परिवार के साथ लंच हो या कोई खास शाम।",
+      "exp.c3.t":"अनलिमिटेड थाली","exp.c3.d":"पूरा भोजन — मिठाई, फरसाण, सब्ज़ियाँ, दाल, कढ़ी, रोटली, चावल और बहुत कुछ, जब तक आप पूरी तरह तृप्त न हो जाएँ।",
+      "exp.c4.t":"बैंक्वेट और कैटरिंग","exp.c4.d":"कोई आयोजन है? हमारा गांधीनगर आउटलेट बैंक्वेट स्थान और पूरी कैटरिंग सेवा देता है।",
+      "gallery.eyebrow":"एक झलक अंदर की","gallery.title":"खाने के लिए आएँ, <em>एहसास के लिए रुकें।</em>",
+      "outlets.eyebrow":"हमें पाएँ","outlets.title":"तीन आउटलेट। <em>एक घर का स्वाद।</em>",
+      "outlets.sub":"पूरे अनुभव के लिए यहाँ खाएँ, या Swiggy और Zomato पर गरमागरम मँगवाएँ।",
+      "outlets.map":"📍 नक्शा",
+      "o1.tag":"पहला आउटलेट","o1.name":"चाणक्यपुरी","o1.sub":"Rotlo The Dining Hall","o1.addr":"A-11, शिवम आर्केड, R.C. टेक्निकल रोड, चाणक्यपुरी, अहमदाबाद — 380061","o1.price":"बजट-फ्रेंडली अनलिमिटेड थाली · जैन उपलब्ध",
+      "o2.tag":"आरामदायक और आधुनिक","o2.name":"वस्त्रापुर","o2.sub":"Rotlo Gujarati Rasthal","o2.addr":"FF-136/137, हिमालय आर्केड A, भारत पेट्रोलियम के पास, वस्त्रापुर गाम, महावीर नगर सोसायटी, वस्त्रापुर, अहमदाबाद — 380015","o2.price":"बड़े ₹280 · बच्चे ₹180 (7 साल से कम) · जैन उपलब्ध",
+      "o3.tag":"रेस्टोरेंट और बैंक्वेट","o3.name":"गांधीनगर","o3.sub":"Rotlo Gujarati Rasthal · सरगासन","o3.addr":"एट्रिया बिज़नेस हब, KH रोड, वासणा हडमतिया, सरगासन, गांधीनगर — 382421","o3.price":"डाइन-इन ₹399 · टेकअवे ₹200 · बच्चे ₹220 · बैंक्वेट और कैटरिंग",
+      "catering.title":"कोई आयोजन है?","catering.desc":"हमारा गांधीनगर आउटलेट पूरा बैंक्वेट हॉल और असली गुजराती कैटरिंग देता है — उत्सव, कॉर्पोरेट लंच और पारिवारिक समारोहों के लिए बिल्कुल सही।","catering.cta":"अभी पूछें →",
+      "contact.eyebrow":"संपर्क करें","contact.title":"भूख लगी है? या बस <em>हाय कहना है?</em>",
+      "contact.sub":"कैटरिंग, बल्क ऑर्डर, फीडबैक या सिर्फ एक हैलो — हमें सुनकर खुशी होगी।",
+      "contact.callLbl":"हमारे आउटलेट को कॉल करें","contact.emailLbl":"ईमेल","contact.hoursLbl":"खुलने का समय","contact.hoursVal":"सुबह 11:30 – दोपहर 3:30 &nbsp;·&nbsp; शाम 7:00 – रात 10:30",
+      "contact.formTitle":"हमें संदेश भेजें","contact.formSub":"यह भरें और यह सीधे हमारे इनबॉक्स में पहुँचेगा — हम एक दिन में जवाब देंगे।",
+      "contact.fName":"आपका नाम","contact.fPhone":"फोन नंबर","contact.fReason":"विषय",
+      "contact.opt1":"सामान्य पूछताछ","contact.opt2":"कैटरिंग / बल्क ऑर्डर","contact.opt3":"बैंक्वेट / इवेंट बुकिंग","contact.opt4":"फीडबैक",
+      "contact.fMsg":"संदेश","contact.fSubmit":"संदेश भेजें →",
+      "contact.formNote":"हम आपकी जानकारी कभी साझा नहीं करेंगे। जवाब सीधे हमारी टीम से आएगा।",
+      "wa.title":"WhatsApp पर हमसे बात करें","wa.sub":"अपने सबसे नज़दीकी आउटलेट को चुनें — ऑर्डर, कैटरिंग या बुकिंग के लिए सीधे मैसेज करें।","wa.note":"WhatsApp एक तैयार मैसेज के साथ खुलेगा — बस भेजें।",
+      "footer.tagline":"हम सिर्फ खाना नहीं, खुशियां भी परोसते हैं। अहमदाबाद और गांधीनगर में असली गुजराती थाली।",
+      "footer.exploreTitle":"एक्सप्लोर करें","footer.outletsTitle":"हमारे आउटलेट",
+      "footer.copy":'© <span id="yr"></span> Rotlo Gujarati Rasthal. सर्वाधिकार सुरक्षित।',
+      "footer.made":"प्यार से बनाया गया 🌾"
+    },
+    gu: {
+      "nav.about":"અમારી વાર્તા","nav.exp":"શા માટે Rotlo","nav.outlets":"આઉટલેટ્સ","nav.contact":"સંપર્ક","nav.order":"ઑર્ડર કરો","nav.menuBtn":"મેનુ",
+      "hero.eyebrow":"અમે માત્ર ભોજન નહીં, ખુશીઓ પણ પીરસીએ છીએ",
+      "hero.title":'સ્વાદમાં પરંપરા,<br><span class="italic">અનુભવમાં</span> <span class="underline-mark">પોતાપણું.</span>',
+      "hero.sub":"તાજા પિસેલા મસાલા અને પરંપરાગત રેસિપીથી બનેલી સાચી ગુજરાતી થાળી — એક હૂંફાળા, આધુનિક વાતાવરણમાં, જે ઘર જેવું લાગે, બસ એનાથીય સારું.",
+      "hero.reviewsLabel":" · 7,000+ ગ્રાહકોનો પ્રેમ",
+      "hero.ctaPrimary":"ટેબલ બુક કરો →","hero.ctaSecondary":"શા માટે Rotlo",
+      "hero.badge":"અમદાવાદ અને ગાંધીનગરમાં<br>ત્રણ આઉટલેટ",
+      "val.1.t":"શુદ્ધ અને પ્રામાણિક","val.1.d":"તાજા પિસેલા મસાલા અને ઉત્તમ સામગ્રી, કોઈ શોર્ટકટ નહીં.",
+      "val.2.t":"પરંપરા સાથે જોડાયેલા","val.2.d":"પેઢીઓથી ચાલી આવતી રેસિપી.",
+      "val.3.t":"આધુનિક આરામ","val.3.d":"તમારા માટે બનાવેલા સુંદર, આવકારદાયક સ્થાનો.",
+      "val.4.t":"100% શાકાહારી","val.4.d":"પૌષ્ટિક, સાત્વિક ભોજન — જૈન વિકલ્પ પણ.",
+      "about.eyebrow":"અમારી વાર્તા",
+      "about.title":"જ્યાં વારસો મળે <em>મહેમાનગતિ સાથે.</em>",
+      "about.p1":"Rotlo એક સાદી માન્યતાથી શરૂ થયું — <strong>સાચા ગુજરાતી ભોજનને સન્માન મળવું જોઈએ.</strong> એટલે અમે દાદી-બાની રેસિપીને એવું ઘર આપ્યું જે એને લાયક હોય: હૂંફાળા, સુંદર સ્થાનો જ્યાં દરેક ભોજન એક ખાસ પ્રસંગ લાગે.",
+      "about.p2":"તાજા મસાલા. પરંપરાગત રેસિપી. દિલથી પીરસેલી અમર્યાદિત થાળી. તમે અહીં જમો, ડિલિવરી મંગાવો કે કોઈ પ્રસંગ માટે બુક કરો — દર વખતે એ જ કાળજી ચાખવા મળશે.",
+      "about.stat1":"આઉટલેટ્સ","about.stat2":"રિવ્યૂ","about.stat3":"સરેરાશ રેટિંગ","about.stat4":"શાકાહારી",
+      "exp.eyebrow":"શા માટે Rotlo","exp.title":"દિલથી સાચું, <em>ડિઝાઇનમાં આધુનિક.</em>",
+      "exp.c1.t":"યોગ્ય રીતે બનેલું","exp.c1.d":"રસોડામાં કોઈ બાંધછોડ નહીં. ઉત્તમ સામગ્રી અને સાચી રેસિપી, જેમ સાચું ગુજરાતી ભોજન બનવું જોઈએ.",
+      "exp.c2.t":"તમને ગમે એવા સ્થાનો","exp.c2.d":"વિચારપૂર્વક બનાવેલા ઇન્ટિરિયર — હૂંફાળા, સુંદર અને આરામદાયક, પરિવાર સાથે લંચ હોય કે ખાસ સાંજ.",
+      "exp.c3.t":"અમર્યાદિત થાળી","exp.c3.d":"સંપૂર્ણ ભોજન — મીઠાઈ, ફરસાણ, શાક, દાળ, કઢી, રોટલી, ભાત અને ઘણું બધું, જ્યાં સુધી તમે પૂરા તૃપ્ત ન થાવ.",
+      "exp.c4.t":"બેન્ક્વેટ અને કેટરિંગ","exp.c4.d":"કોઈ પ્રસંગ છે? અમારું ગાંધીનગર આઉટલેટ બેન્ક્વેટ સ્થાન અને પૂરી કેટરિંગ સેવા આપે છે.",
+      "gallery.eyebrow":"અંદરની એક ઝલક","gallery.title":"ભોજન માટે આવો, <em>અનુભવ માટે રોકાવ.</em>",
+      "outlets.eyebrow":"અમને શોધો","outlets.title":"ત્રણ આઉટલેટ. <em>એક ઘરનો સ્વાદ.</em>",
+      "outlets.sub":"સંપૂર્ણ અનુભવ માટે અહીં જમો, કે Swiggy અને Zomato પર ગરમાગરમ મંગાવો.",
+      "outlets.map":"📍 નકશો",
+      "o1.tag":"પહેલું આઉટલેટ","o1.name":"ચાણક્યપુરી","o1.sub":"Rotlo The Dining Hall","o1.addr":"A-11, શિવમ આર્કેડ, R.C. ટેક્નિકલ રોડ, ચાણક્યપુરી, અમદાવાદ — 380061","o1.price":"બજેટ-ફ્રેન્ડલી અમર્યાદિત થાળી · જૈન ઉપલબ્ધ",
+      "o2.tag":"આરામદાયક અને આધુનિક","o2.name":"વસ્ત્રાપુર","o2.sub":"Rotlo Gujarati Rasthal","o2.addr":"FF-136/137, હિમાલય આર્કેડ A, ભારત પેટ્રોલિયમ પાસે, વસ્ત્રાપુર ગામ, મહાવીર નગર સોસાયટી, વસ્ત્રાપુર, અમદાવાદ — 380015","o2.price":"મોટા ₹280 · બાળકો ₹180 (7 વર્ષથી નીચે) · જૈન ઉપલબ્ધ",
+      "o3.tag":"રેસ્ટોરન્ટ અને બેન્ક્વેટ","o3.name":"ગાંધીનગર","o3.sub":"Rotlo Gujarati Rasthal · સરગાસણ","o3.addr":"એટ્રિયા બિઝનેસ હબ, KH રોડ, વાસણા હડમતિયા, સરગાસણ, ગાંધીનગર — 382421","o3.price":"ડાઇન-ઇન ₹399 · ટેકઅવે ₹200 · બાળકો ₹220 · બેન્ક્વેટ અને કેટરિંગ",
+      "catering.title":"કોઈ પ્રસંગ છે?","catering.desc":"અમારું ગાંધીનગર આઉટલેટ પૂરો બેન્ક્વેટ હૉલ અને સાચી ગુજરાતી કેટરિંગ આપે છે — ઉજવણી, કોર્પોરેટ લંચ અને પારિવારિક પ્રસંગો માટે યોગ્ય.","catering.cta":"હમણાં પૂછો →",
+      "contact.eyebrow":"સંપર્ક કરો","contact.title":"ભૂખ લાગી છે? કે ખાલી <em>હાય કહેવું છે?</em>",
+      "contact.sub":"કેટરિંગ, બલ્ક ઑર્ડર, ફીડબેક કે ખાલી એક હેલો — અમને સાંભળવાનું ગમશે.",
+      "contact.callLbl":"અમારા આઉટલેટને કૉલ કરો","contact.emailLbl":"ઈમેઈલ","contact.hoursLbl":"ખુલવાનો સમય","contact.hoursVal":"સવારે 11:30 – બપોરે 3:30 &nbsp;·&nbsp; સાંજે 7:00 – રાત્રે 10:30",
+      "contact.formTitle":"અમને સંદેશ મોકલો","contact.formSub":"આ ભરો અને એ સીધું અમારા ઇનબૉક્સમાં પહોંચશે — અમે એક દિવસમાં જવાબ આપીશું.",
+      "contact.fName":"તમારું નામ","contact.fPhone":"ફોન નંબર","contact.fReason":"વિષય",
+      "contact.opt1":"સામાન્ય પૂછપરછ","contact.opt2":"કેટરિંગ / બલ્ક ઑર્ડર","contact.opt3":"બેન્ક્વેટ / ઇવેન્ટ બુકિંગ","contact.opt4":"ફીડબેક",
+      "contact.fMsg":"સંદેશ","contact.fSubmit":"સંદેશ મોકલો →",
+      "contact.formNote":"અમે તમારી વિગતો ક્યારેય શેર નહીં કરીએ. જવાબ સીધો અમારી ટીમ તરફથી આવશે.",
+      "wa.title":"WhatsApp પર અમારી સાથે વાત કરો","wa.sub":"તમારી નજીકના આઉટલેટને પસંદ કરો — ઑર્ડર, કેટરિંગ કે બુકિંગ માટે સીધો મેસેજ કરો.","wa.note":"WhatsApp એક તૈયાર મેસેજ સાથે ખુલશે — બસ મોકલો.",
+      "footer.tagline":"અમે માત્ર ભોજન નહીં, ખુશીઓ પણ પીરસીએ છીએ. અમદાવાદ અને ગાંધીનગરમાં સાચી ગુજરાતી થાળી.",
+      "footer.exploreTitle":"એક્સ્પ્લોર કરો","footer.outletsTitle":"અમારા આઉટલેટ",
+      "footer.copy":'© <span id="yr"></span> Rotlo Gujarati Rasthal. તમામ હક્ક અમારી પાસે છે.',
+      "footer.made":"પ્રેમથી બનાવેલું 🌾"
+    }
+  };
+
+  let currentLang = 'en';
+  function t(key){ return (I18N[currentLang] && I18N[currentLang][key]) || (I18N.en[key] || key); }
+
+  function setLang(lang){
+    if(!I18N[lang]) lang = 'en';
+    currentLang = lang;
+    document.body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.getAttribute('data-i18n')); });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.getAttribute('data-i18n-html')); });
+    const yr = document.getElementById('yr'); if(yr) yr.textContent = new Date().getFullYear();
+    document.querySelectorAll('.lang-switch button').forEach(btn => { btn.classList.toggle('active', btn.getAttribute('data-lang') === lang); });
+    try { localStorage.setItem('rotlo_lang', lang); } catch(e){}
+  }
+
+  function toggleMenu(){
+    const links = document.getElementById('navLinks');
+    const btn = document.getElementById('menuToggle');
+    const open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  (function(){
+    let saved = 'en';
+    try { saved = localStorage.getItem('rotlo_lang') || 'en'; } catch(e){}
+    setLang(saved);
+  })();
+
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('menuToggle').setAttribute('aria-expanded','false');
+    });
+  });
+
+</script>
+
+</body>
+</html>
